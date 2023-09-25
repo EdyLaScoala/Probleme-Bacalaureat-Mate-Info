@@ -7,26 +7,31 @@ ifstream fin("bac.in");
 
 int main()
 {
-    int m, n, aux;
+    int m, n, aux, max, maxpos;
     fin >> n >> m;
     int v[m][n];
-    for(int i=0; i<m; i++)
+    for(int i=0; i<n; i++)
     {
-        for(int j=0; j<n; j++)
+        for(int j=0; j<m; j++)
         {
             fin >> v[i][j];
         }
     }
 
-    int max[n];
-
-    for(int i=0; i<m; i++)
+    for(int i=0; i<n; i++)
     {
-        for(int j=0; j<n; j++)
+        max = 0;
+        maxpos = 1;
+        for(int j=0; j<m; j++)
         {
-            cout << v[i][j] << " ";
+            
+            if (v[i][j] > max)
+            {
+                max = v[i][j];
+                maxpos = j + 1;
+            }
         }
-        cout << endl;
+        cout << i + 1 << " : " << maxpos << "; ";
     }
     return 0;
 }
